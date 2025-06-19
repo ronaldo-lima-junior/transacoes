@@ -1,7 +1,8 @@
-import { knex as setupeKnex, Knex } from 'knex'
+import { knex as setupKnex, Knex } from 'knex'
+import 'dotenv/config'
 
 export const config: Knex.Config = {
-  client: process.env.DATABASE_CLIENT || 'sqlite',
+  client: process.env.DATABASE_CLIENT || 'sqlite3',
   connection: {
     filename: process.env.DATABASE_FILE_NAME || '',
   },
@@ -12,4 +13,4 @@ export const config: Knex.Config = {
   },
 }
 
-export const knex = setupeKnex(config)
+export const knex = setupKnex(config)
