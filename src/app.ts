@@ -1,20 +1,11 @@
-import 'dotenv/config'
 import fastify from 'fastify'
 import generalConfig from './config/general'
 import { knex } from './infra/database'
+import { transactionsRoutes } from './routes/transactions'
 
 const app = fastify()
 
-app.get('/ping', () => {
-  return 'pong'
-})
-
-app.get('/db', async () => {
-  const tables = await knex('sqlite_schema').select('*')
-
-  return tables
-})
-
+app.register(transactionsRoutes)
 app
   .listen({
     port: generalConfig.port,

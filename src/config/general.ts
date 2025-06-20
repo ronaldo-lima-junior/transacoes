@@ -1,3 +1,5 @@
+import { env } from '../env'
+
 interface IGeneralConfig {
   port: number
   name: string
@@ -5,8 +7,8 @@ interface IGeneralConfig {
 }
 
 const generalConfig: IGeneralConfig = {
-  environment: process.env.NODE_ENV || 'development',
-  port: Number(process.env.PORT),
+  environment: env.NODE_ENV,
+  port: Number(env.PORT),
   name: 'Back-end',
 }
 
