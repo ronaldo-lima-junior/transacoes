@@ -1,11 +1,15 @@
 import fastify from 'fastify'
 import generalConfig from './config/general'
-import { knex } from './infra/database'
 import { transactionsRoutes } from './routes/transactions'
+import { utilsRoutes } from './routes/utils'
 
 const app = fastify()
 
-app.register(transactionsRoutes)
+app.register(utilsRoutes)
+app.register(transactionsRoutes, {
+  prefix: 'transactions',
+})
+
 app
   .listen({
     port: generalConfig.port,
