@@ -38,5 +38,5 @@ Thumbs.db
 .eslintcache
 
 .env
-.db
+*.db
 **/tmp
